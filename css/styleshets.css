@@ -131,7 +131,7 @@ li {
 }
 
 .domain-zone {
-    background-image: url(/img/domain-back.png);
+    background-image: url("/img/domain-back.png");
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -159,7 +159,7 @@ li {
 
 .domain-zone>.img {
     margin-top: 4%;
-    background-image: url(/img/domain-img.png);
+    background-image: url("/img/domain-img.png");
     width: 102px;
     height: 110px;
 }
@@ -379,17 +379,17 @@ li {
 }
 
 .feature-img.first {
-    background-image: url(/img/feature-img1.png);
+    background-image: url("/img/feature-img1.png");
 }
 
 .feature-img.second {
-    background-image: url(/img/feature-img2.png);
+    background-image: url("/img/feature-img2.png");
 }
 
 .feature-img.third {
-    background-image: url(/img/feature-img3.png);
+    background-image: url("/img/feature-img3.png");
 }
 
 .feature-img.four {
-    background-image: url(/img/feature-img4.png);
+    background-image: url("/img/feature-img4.png");
 }
