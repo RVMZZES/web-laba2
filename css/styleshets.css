@@ -493,3 +493,51 @@ li {
     line-height: 1.5;
     text-align: left;
 }
+
+.price-zone {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    background-color: rgb(32, 34, 66);
+}
+
+.price-zone>.text>h1 {
+    font-size: 36px;
+    font-family: "Raleway";
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    line-height: 0.667;
+    text-align: left;
+}
+
+.price-zone>.text>p {
+    font-size: 18px;
+    font-family: "Raleway";
+    color: rgb(103, 104, 123);
+    line-height: 1.333;
+    text-align: left;
+}
+
+.but-price {
+    padding: 20px;
+    background-color: rgb(255, 225, 62);
+    font-size: 18px;
+    font-family: "Raleway";
+    color: rgb(32, 34, 66);
+    font-weight: bold;
+    line-height: 1.333;
+    text-align: left;
+    border: 3px solid white;
+}
+
+.but-price:hover {
+    border-color: black;
+}
+
+.but-price:active {
+    color: black;
+}
