@@ -70,7 +70,7 @@ li {
 }
 
 .header-text>.icon {
-    background-image: url("/img/header-logo.png");
+    background-image: url("img/header-logo.png");
     width: 26px;
     height: 32px;
     margin-right: 10px;
@@ -131,7 +131,7 @@ li {
 }
 
 .domain-zone {
-    background-image: url("/img/domain-back.png");
+    background-image: url("img/domain-back.png");
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -160,7 +160,7 @@ li {
 
 .domain-zone>.img {
     margin-top: 4%;
-    background-image: url("/img/domain-img.png");
+    background-image: url("img/domain-img.png");
     width: 102px;
     height: 110px;
 }
@@ -380,19 +380,19 @@ li {
 }
 
 .feature-img.first {
-    background-image: url("/img/feature-img1.png");
+    background-image: url("img/feature-img1.png");
 }
 
 .feature-img.second {
-    background-image: url("/img/feature-img2.png");
+    background-image: url("img/feature-img2.png");
 }
 
 .feature-img.third {
-    background-image: url("/img/feature-img3.png");
+    background-image: url("img/feature-img3.png");
 }
 
 .feature-img.four {
-    background-image: url("/img/feature-img4.png");
+    background-image: url("img/feature-img4.png");
 }
 
 .clients-zone {
@@ -443,19 +443,19 @@ li {
 }
 
 .campanys>.first {
-    background-image: url("/img/camp1.png");
+    background-image: url("img/camp1.png");
 }
 
 .campanys>.second {
-    background-image: url("/img/camp2.png");
+    background-image: url("img/camp2.png");
 }
 
 .campanys>.camp-img.third {
-    background-image: url("/img/camp3.png");
+    background-image: url("img/camp3.png");
 }
 
 .campanys>.camp-img.four {
-    background-image: url("/img/camp4.png");
+    background-image: url("img/camp4.png");
 }
 
 .feedbacks {
