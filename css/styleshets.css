@@ -383,13 +383,13 @@ li {
 }
 
 .feature-img.second {
-    background-image: url("img/feature-img2.png");
+    background-image: url(img/feature-img2.png);
 }
 
 .feature-img.third {
-    background-image: url("img/feature-img3.png");
+    background-image: url("/img/feature-img3.png");
 }
 
 .feature-img.four {
-    background-image: url("img/feature-img4.png");
+    background-image: url(/img/feature-img4.png);
 }
