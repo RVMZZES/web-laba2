@@ -61,7 +61,7 @@ li {
     /* Внутри блочные отступы. */
 }
 
-.selected {
+a.selected {
     color: rgb(255, 225, 62);
 }
 
@@ -132,6 +132,8 @@ li {
 
 .domain-zone {
     background-image: url("img/domain-back.png");
+    background-repeat: no-repeat;
+    background-size: cover;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -309,6 +311,7 @@ li {
     align-items: center;
     background-color: rgb(251, 248, 241);
     padding-top: 10%;
+    width: 100%;
 }
 
 .features-title {
@@ -434,12 +437,45 @@ li {
 
 .campanys {
     display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 15px;
+    min-width: 60%;
+}
+
+@media (max-width:1000px) {
+    .header-body {
+        padding-left: 1%;
+        padding-right: 1%;
+    }
+    .header-menu>ul {
+        flex-wrap: wrap;
+        min-width: 240px;
+    }
+    .campanys {
+        flex-wrap: wrap;
+        min-width: 50%;
+        align-content: space-between;
+    }
+    .camp-img {
+        background-size: cover;
+        background-repeat: no-repeat;
+        width: 115px;
+        height: auto;
+        padding: 50px;
+    }
+    .features {
+        flex-wrap: wrap;
+    }
 }
 
 .camp-img {
-    width: 152px;
-    height: 115px;
-    margin: 10px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-width: 115px;
+    height: auto;
+    max-height: 115px;
+    padding-right: 10px;
 }
 
 .campanys>.first {
@@ -540,4 +576,96 @@ li {
 
 .but-price:active {
     color: black;
+}
+
+footer {
+    background-color: #363855;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 5%;
+}
+
+.foot-body {
+    display: flex;
+    flex-direction: row;
+    width: 55%;
+    margin-right: 15%;
+    margin-left: 35%;
+    justify-content: center;
+}
+
+.map {
+    background-image: url("img/map.png");
+    min-width: 100%;
+    min-height: auto;
+    justify-self: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.foot-menu {
+    padding-top: 5%;
+    align-self: flex-end;
+    justify-self: flex-end;
+    margin-left: 5%;
+}
+
+.navig {
+    font-size: 18px;
+    font-family: "Raleway";
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    line-height: 2;
+}
+
+.foot-menu li {
+    align-self: flex-end;
+    text-align: right;
+}
+
+.foot-menu li>a {
+    font-size: 16px;
+    font-family: "Raleway";
+    color: rgb(255, 255, 255);
+    line-height: 2.0;
+    border-bottom: 1px solid rgb(167, 170, 228);
+    padding-bottom: 5px;
+}
+
+.foot-menu li>a:hover {
+    color: rgb(244, 211, 32);
+}
+
+.foot-menu li:last-child>a {
+    border: none;
+}
+
+.back {
+    font-size: 12px;
+    font-family: "Raleway";
+    color: rgb(255, 255, 255);
+    line-height: 3;
+    text-align: right;
+    justify-self: flex-end;
+}
+
+.back:hover {
+    color: rgb(244, 211, 32);
+}
+
+.copyright {
+    font-size: 14px;
+    font-family: "Raleway";
+    color: rgb(255, 255, 255);
+    line-height: 1.714;
+    text-align: left;
+    margin-bottom: 5%;
+}
+
+.img-foot {
+    background-image: url("img/footer-img.png");
+    width: 31px;
+    height: 30px;
+    margin-bottom: 20px;
 }
