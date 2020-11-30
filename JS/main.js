@@ -53,7 +53,7 @@ const Properties = {
 
 function printFilters(arrServers, arProperties, selector) {
     const startTemplate = '<div id="filter"><br>{{name}}<br>';
-    const lileTemplate = '<label><input type="checkbox" name="{{prop}}" value="{{name}}" checked>{{name}}</label><br>';
+    const lileTemplate = '<label><input type="checkbox" name="{{prop}}" value="{{name}}">{{name}}</label><br>';
     const endTemplate = '</div>';
 
     let output = '';
@@ -95,8 +95,6 @@ function applyFilters(data, filter, properties) {
     for (let server of data) {
         let ok = true;
         for (let prop in properties) {
-            //alert("Сервер " + server[prop] + " Фильтр " + filter[prop] + " найден " + filter[prop].indexOf(server[prop]));
-            //alert(typeof(filter[prop][0]) + typeof(server[prop]))
             if (!filter[prop].length)
                 continue;
             if (filter[prop].indexOf(server[prop]) == -1)
@@ -109,17 +107,38 @@ function applyFilters(data, filter, properties) {
     return result;
 }
 
+// оставляет включенным фильтры, которые влияют на выборку
+function getNewFilters(selector, data, properties) {
+    let resultFilters = [];
+    $("#filter input").prop('disabled', true);
+    $("#filter input:checkbox:checked").prop('enabled', true);
+
+    for (let server of data) {
+        for (let prop in properties) {
+            console.log(prop, server);
+            // ищем нужный фильтр и включаем его
+            let filter = $("#filter input[name='" + prop + "'][value='" + server[prop] + "']")
+            filter.prop('disabled', false);
+        }
+    }
+}
+
 $('document').ready(function() {
 
     //printServers(servers, "#servers");
     printServers(servers, "#servers");
     printFilters(servers, Properties, "#filters");
     $('#filter input').change(function() {
+        //console.log($(this).val(), $(this).prop('name'))
+
+
         let curFilter = readCurFilters('#filter input', Properties);
         //alert("Фильттры" + curFilter);
         let filtredServers = applyFilters(servers, curFilter, Properties);
         //alert(filtredServers);
+        getNewFilters('#filter input', filtredServers, Properties)
         printServers(filtredServers, '#servers');
+
     });
 
 })
