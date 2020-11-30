@@ -77,11 +77,24 @@ function printFilters(arrServers, arProperties, selector) {
 }
 
 function readCurFilters(selector, properties) {
-
     let result = [];
     for (let prop in properties) {
         result.push(prop);
         let searchIDs = $("#filters input[name='" + prop + "']:checkbox:checked").map(function() {
+            return $(this).val();
+        }).get();
+        result[prop] = searchIDs;
+    }
+    return result;
+}
+
+function readNotCurFilters(selector, properties) {
+    let result = [];
+    for (let prop in properties) {
+        result.push(prop);
+        let searchIDs = $("#filter input[name='" + prop + "']").filter(function() {
+            return ($(this).prop('checked') == false)
+        }).map(function() {
             return $(this).val();
         }).get();
         result[prop] = searchIDs;
@@ -107,20 +120,40 @@ function applyFilters(data, filter, properties) {
     return result;
 }
 
-// оставляет включенным фильтры, которые влияют на выборку
-function getNewFilters(selector, data, properties) {
-    let resultFilters = [];
-    $("#filter input").prop('disabled', true);
-    $("#filter input:checkbox:checked").prop('enabled', true);
+// принимает данные и текущий фильтр
+function getNewFilters(selector, data, curFilter, properties) {
+    // вычисляет кол-во записей с текущим фильтром
+    let filtredServers = applyFilters(data, curFilter, Properties);
 
-    for (let server of data) {
+    // проверим все невыбранные фильтры, если они что-то добавляют оставляем эту галочку
+    let notCurFilters = readNotCurFilters(selector, properties);
+    console.log(notCurFilters);
+
+    for (let prop of notCurFilters) {
+        for (filter of notCurFilters[prop]) {
+            curFilter[prop].push(filter);
+            let tempArr = applyFilters(data, curFilter, properties);
+            // если фильтр ничего не добавляет, отключаем его
+            if (tempArr.length <= 1) {
+                let f = $("#filter input[name='" + prop + "'][value='" + filter + "']");
+                f.prop('disabled', true);
+            }
+            // удалим то, что добавили
+            curFilter[prop].pop();
+        }
+    }
+
+    for (let server of filtredServers) {
         for (let prop in properties) {
             console.log(prop, server);
             // ищем нужный фильтр и включаем его
-            let filter = $("#filter input[name='" + prop + "'][value='" + server[prop] + "']")
+            let filter = $(selector + "[name='" + prop + "'][value='" + server[prop] + "']")
             filter.prop('disabled', false);
         }
     }
+    //$("#filter input:checkbox:checked").prop('disabled', false);
+    //$("#filter input[name=" + curFilterGroup + "]").prop('disabled', false);
+    return filtredServers;
 }
 
 $('document').ready(function() {
@@ -129,14 +162,20 @@ $('document').ready(function() {
     printServers(servers, "#servers");
     printFilters(servers, Properties, "#filters");
     $('#filter input').change(function() {
-        //console.log($(this).val(), $(this).prop('name'))
+        console.log($(this).val(), $(this).prop('name'), $(this).prop('checked'));
+        // фильтр добавился, значит нужно убрать те, которые теперь ничего не добавляют
+        if ($(this).prop('checked') == true) {
+            console.log("ПЕРЕМЕН!");
+        } else { // фильтр ушел
 
-
+        }
+        $("#filter input").prop("disabled", false);
         let curFilter = readCurFilters('#filter input', Properties);
         //alert("Фильттры" + curFilter);
-        let filtredServers = applyFilters(servers, curFilter, Properties);
         //alert(filtredServers);
-        getNewFilters('#filter input', filtredServers, Properties)
+        let filtredServers = getNewFilters('#filter input', servers, curFilter, Properties)
+            //console.log($(this).val(), $(this).prop('name'))
+
         printServers(filtredServers, '#servers');
 
     });
