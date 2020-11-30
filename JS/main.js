@@ -129,7 +129,7 @@ $('document').ready(function() {
     printServers(servers, "#servers");
     printFilters(servers, Properties, "#filters");
     $('#filter input').change(function() {
-        console.log($(this).val(), $(this).prop('name'))
+        //console.log($(this).val(), $(this).prop('name'))
 
 
         let curFilter = readCurFilters('#filter input', Properties);
