@@ -134,7 +134,7 @@ function getNewFilters(selector, data, curFilter, properties) {
             curFilter[prop].push(filter);
             let tempArr = applyFilters(data, curFilter, properties);
             // если фильтр ничего не добавляет, отключаем его
-            if (tempArr.length <= 1) {
+            if (tempArr.length <= filtredServers.length && tempArr.filter(elem => filtredServers.indexOf(elem) == -1).length == 0) {
                 let f = $("#filter input[name='" + prop + "'][value='" + filter + "']");
                 f.prop('disabled', true);
             }
