@@ -449,7 +449,7 @@ li.selected>a {
     text-align: left;
 }
 
-.campanys {
+.companies {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
